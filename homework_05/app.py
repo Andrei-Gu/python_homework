@@ -21,7 +21,7 @@ def index_view():
     return render_template('index.html')
 
 
-@app.route("/about")
+@app.route("/about/")
 def get_about():
     return render_template('about.html')
 
