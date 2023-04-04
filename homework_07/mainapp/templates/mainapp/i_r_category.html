@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BestMed</title>
+</head>
+<body>
+{{category_description}}
+
+<p>На текущий момент Вам доступны:</p>
+    <ol>
+        {% for research in researches %}
+        <li>
+            {{research}}
+        </li>
+        {% endfor %}
+    </ol>
+
+</body>
+</html>
