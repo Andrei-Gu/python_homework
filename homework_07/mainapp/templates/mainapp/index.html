@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BestMed</title>
+</head>
+<body>
+Добро пожаловать в BestMed!
+
+<p>На текущий момент Вам доступны:</p>
+    <ol>
+        {% for i_r_category in i_r_categories %}
+        <li>
+            {{i_r_category}}:
+            <ul>
+                {% for instrumental_research in instrumental_researches %}
+                    {% if instrumental_research.i_r_category == i_r_category %}
+                    <li>
+                        {{instrumental_research.name}}
+                    </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ol>
+
+
+
+
+</body>
+</html>
