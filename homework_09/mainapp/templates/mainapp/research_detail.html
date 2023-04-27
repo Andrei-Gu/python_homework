@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{object.name}}</h1>
+
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">{{i_r_card.i_r_description}}</li>
+    <li class="list-group-item">
+        Предварительная подготовка и требования:
+        {% for item in i_r_preparations %}
+        <p>{{item}}</p>
+        {% endfor %}
+    </li>
+    <li class="list-group-item">Стоимость {{i_r_card.i_r_price}} руб.</li>
+    {% if i_r_card.i_r_interesting_fact != '' %}
+    <li class="list-group-item">
+        Интересный факт:
+        <p>{{i_r_card.i_r_interesting_fact}}</p>
+    </li>
+   {% endif %}
+</ul>
+
+<a class="btn btn-warning" href="{{object.get_absolute_url}}card-update/">Обновить карточку</a>
+
+<a class="btn btn-danger" href="{{object.get_absolute_url}}card-delete/">Удалить карточку</a>
+
+
+{% endblock %}
