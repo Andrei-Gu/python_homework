@@ -22,7 +22,7 @@ from sqlalchemy.orm import relationship
 PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://postgres:password@localhost/postgres"
 
 
-async_engine: create_async_engine(
+async_engine = create_async_engine(
     url=PG_CONN_URI,
     echo=True,
 )
