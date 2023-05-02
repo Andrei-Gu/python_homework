@@ -54,12 +54,17 @@ class User(Base):
 class Post(Base):
     __tablename__ = 'posts'
     id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey("postgres_users.id"), unique=False, nullable=False)
+    user_id = Column(
+        Integer,
+        ForeignKey("postgres_users.id", name="fk_user_id"),
+        unique=True,
+        nullable=False,
+    )
     title = Column(String, unique=True, nullable=False)
     body = Column(Text, nullable=False)
 
     user = relationship(
         "User",
-        back_populates="posts",
+        back_populates="post",
         uselist=False,
     )
