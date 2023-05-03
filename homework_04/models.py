@@ -39,7 +39,7 @@ Base = declarative_base()
 
 
 class User(Base):
-    __tablename__ = 'users'
+    __tablename__ = "users"
     id = Column(Integer, primary_key=True)
     name = Column(String, unique=True, nullable=False)
     username = Column(String, unique=True, nullable=False)
@@ -47,16 +47,16 @@ class User(Base):
 
     posts = relationship(
         "Post",
-        back_populates="users",
+        back_populates="user",
     )
 
 
 class Post(Base):
-    __tablename__ = 'posts'
+    __tablename__ = "posts"
     id = Column(Integer, primary_key=True)
     user_id = Column(
         Integer,
-        ForeignKey("postgres_users.id", name="fk_user_id"),
+        ForeignKey("users.id"),
         unique=True,
         nullable=False,
     )
