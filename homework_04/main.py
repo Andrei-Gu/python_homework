@@ -37,7 +37,6 @@ async def create_posts(post_list):
 
 async def async_main():
     await create_tables()
-    users_data, posts_data = [], []
     users_data, posts_data = await asyncio.gather(
         fetch_users_data(),
         fetch_posts_data(),
