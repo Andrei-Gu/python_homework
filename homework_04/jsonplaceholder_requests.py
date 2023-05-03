@@ -17,8 +17,8 @@ async def fetch_json(url):
 
 
 async def fetch_users_data():
-    await fetch_json(USERS_DATA_URL)
+    return await fetch_json(USERS_DATA_URL)
 
 
 async def fetch_posts_data():
-    await fetch_json(POSTS_DATA_URL)
+    return await fetch_json(POSTS_DATA_URL)
