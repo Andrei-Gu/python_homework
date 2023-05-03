@@ -25,14 +25,14 @@ async def create_tables():
 
 async def create_users(user_list):
     users = [User(name=item["name"], username=item["username"], email=item["email"]) for item in user_list]
-    async with Session as session:
+    async with Session() as session:
         await session.add_all(users)
         await session.commit()
 
 
 async def create_posts(post_list):
     posts = [Post(user_id=item["user_id"], title=item["title"], body=item["body"]) for item in post_list]
-    async with Session as session:
+    async with Session() as session:
         await session.add_all(posts)
         await session.commit()
 
