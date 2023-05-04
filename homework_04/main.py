@@ -18,9 +18,6 @@ from .models import Base, User, Post, async_engine, Session
 from .jsonplaceholder_requests import fetch_posts_data, fetch_users_data
 
 
-session = Session()
-
-
 async def create_tables():
     async with async_engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
@@ -28,12 +25,14 @@ async def create_tables():
 
 async def create_users(user_list):
     users = [User(name=item["name"], username=item["username"], email=item["email"]) for item in user_list]
+    session = Session()
     await session.add_all(users)
     await session.commit()
 
 
 async def create_posts(post_list):
     posts = [Post(user_id=item["user_id"], title=item["title"], body=item["body"]) for item in post_list]
+    session = Session()
     await session.add_all(posts)
     await session.commit()
 
